@@ -5,7 +5,7 @@
 export function fetchBreeds() {
   return fetch('https://api.thecatapi.com/v1/breeds').then(response => {
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.status);
     }
     return response.json();
   });
@@ -17,7 +17,7 @@ export function fetchCatByBreed(breedId) {
   ).then(response => {
     // console.log(response);
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(response.status);
     }
     return response.json();
   });
