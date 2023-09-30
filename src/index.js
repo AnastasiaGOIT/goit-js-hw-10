@@ -7,7 +7,7 @@ const select = document.querySelector('.breed-select');
 const info = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
-// console.log(info);
+console.log(loader);
 
 fetchBreeds()
   .then(breeds =>
@@ -19,11 +19,14 @@ fetchBreeds()
     })
   )
   .catch(err => console.log(err));
+error.style.display = 'none';
 
 select.addEventListener('change', onChange);
 function onChange(e) {
   const breedId = e.target.value;
   if (breedId) {
+    loader.style.display = 'none';
+
     fetchCatByBreed(breedId)
       .then(markUpFunction(breedId))
       .catch(err => console.log(err));
@@ -40,5 +43,7 @@ function onChange(e) {
       info.innerHTML = markUp;
       return markUp;
     }
+  } else {
+    error.style.display = 'block';
   }
 }
