@@ -1,10 +1,12 @@
 import axios from 'axios';
 axios.defaults.headers.common['x-api-key'] =
-  'live_7rQ0eMZKqrdlo58gDOF1t115hunRXcwNChu7oi4nQ9ehNnK6T7reiR7OXWhR6ay';
+  'live_JlpgD5LjMPXqnfbdBzuobVXBrTl7X1HSYzZlZGsvu1aANVyPApJiTRp2NpcoLvGo';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
 
 const select = document.querySelector('.breed-select');
 const info = document.querySelector('.cat-info');
+const loader = document.querySelector('.loader');
+const error = document.querySelector('.error');
 // console.log(info);
 
 fetchBreeds()
@@ -23,7 +25,7 @@ function onChange(e) {
   const breedId = e.target.value;
   if (breedId) {
     fetchCatByBreed(breedId)
-      .then(cat => markUpFunction(cat))
+      .then(markUpFunction(breedId))
       .catch(err => console.log(err));
 
     function markUpFunction(cat) {
