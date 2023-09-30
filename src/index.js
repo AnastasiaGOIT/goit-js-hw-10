@@ -21,13 +21,13 @@ fetchBreeds()
 select.addEventListener('change', onChange);
 function onChange(e) {
   const breedId = e.target.value;
+  if (breedId) {
+    fetchCatByBreed(breedId)
+      .then(cat => markUpFunction(cat))
+      .catch(err => console.log(err));
 
-  fetchCatByBreed(breedId)
-    .then(cat => markUpFunction(cat))
-    .catch(err => console.log(err));
-
-  function markUpFunction(cat) {
-    const markUp = `
+    function markUpFunction(cat) {
+      const markUp = `
  <img
   src="${cat.url}"
   alt="${cat.name}"
@@ -35,6 +35,8 @@ function onChange(e) {
 <h2>${cat.name}</h2>
 <p>${cat.description}</p>
 <p>${cat.temperament}</p>`;
-    info.innerHTML = markUp;
+      info.innerHTML = markUp;
+      return markUp;
+    }
   }
 }
