@@ -1,5 +1,68 @@
-.loader {
+.none {
+  display: none;
 }
 
-.error {
+.loader app {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.breed-select {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+.cat-info h2 {
+  /* text-align: center; */
+  font-size: 26;
+}
+.cat-info p {
+  width: 400px;
+  text-align: center;
+}
+.cat-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loaders {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loaders::after,
+.loaders::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #ff3d00;
+  width: 6px;
+  height: 6px;
+  transform: translate(150%, 150%);
+  border-radius: 50%;
+}
+.loaders::before {
+  left: auto;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  transform: translate(-150%, -150%);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
