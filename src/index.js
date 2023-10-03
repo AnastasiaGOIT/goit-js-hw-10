@@ -1,8 +1,8 @@
-import SlimSelect from 'slim-select';
-new SlimSelect({
-  select: '.breed-select',
-});
-import 'slim-select/dist/slimselect.css';
+// import SlimSelect from 'slim-select';
+// new SlimSelect({
+//   select: '.breed-select',
+// });
+// import 'slim-select/dist/slimselect.css';
 
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
@@ -17,7 +17,6 @@ function wrapper() {
   fetchBreeds()
     .then(breeds => {
       const options = createOptions(breeds);
-      м;
       select.append(...options);
     })
     .catch(err => console.log(err))
