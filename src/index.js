@@ -1,12 +1,13 @@
 import SlimSelect from 'slim-select';
 new SlimSelect({
-  select: 'select',
+  select: '.breed-select',
 });
+import 'slim-select/dist/slimselect.css';
 
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
 
-// const select = document.querySelector('.breed-select');
+const select = document.querySelector('.breed-select');
 const info = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const error = document.querySelector('.error');
@@ -16,7 +17,7 @@ function wrapper() {
   fetchBreeds()
     .then(breeds => {
       const options = createOptions(breeds);
-
+      м;
       select.append(...options);
     })
     .catch(err => console.log(err))
@@ -56,6 +57,7 @@ function createOptions(breeds) {
     return optionEl;
   });
 }
+
 function createMarkup(data) {
   const [cat] = data;
   info.style.display = 'none';
